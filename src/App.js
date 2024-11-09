@@ -1,5 +1,7 @@
 import logo from './logo.svg';
+import { ToastContainer } from 'react-toastify';
 import './App.css';
+import 'react-toastify/dist/ReactToastify.css'
 
 function App() {
   return (
@@ -18,6 +20,19 @@ function App() {
           Learn React
         </a>
       </header>
+      <ToastContainer
+        position="bottom-center"
+        autoClose={5000}
+        hideProgressBar
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+        transition="Bounce"
+      />
     </div>
   );
 }
