@@ -1,40 +1,35 @@
-import logo from './logo.svg';
-import { ToastContainer } from 'react-toastify';
-import './App.css';
-import 'react-toastify/dist/ReactToastify.css'
+import React from "react";
+import { Routes, Route, Navigate } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import GlobalStyles from "./commonComponents/GlobalStyles";
+import Layout from "./commonComponents/Layout";
+import ProductList from "./features/ProductList";
+import NotFoundView from "./commonComponents/NotFoundView";
+import FilterState from "./context/FilterState";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <>
+      <FilterState>
+        <GlobalStyles />
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route path="/productList" element={<ProductList />} />
+            <Route path="404" element={<NotFoundView />} />
+            <Route path="*" element={<Navigate to="/404" />} />
+          </Route>
+        </Routes>
+      </FilterState>
       <ToastContainer
-        position="bottom-center"
-        autoClose={5000}
-        hideProgressBar
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={true}
+        toastId="Session Has Expired"
         theme="dark"
-        transition="Bounce"
       />
-    </div>
+    </>
   );
-}
+};
 
 export default App;
