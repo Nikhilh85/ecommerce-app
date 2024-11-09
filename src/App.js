@@ -15,7 +15,7 @@ const App = () => {
         <GlobalStyles />
         <Routes>
           <Route path="/" element={<Layout />}>
-            <Route path="/productList" element={<ProductList />} />
+            <Route path="/" element={<ProductList />} />
             <Route path="404" element={<NotFoundView />} />
             <Route path="*" element={<Navigate to="/404" />} />
           </Route>
